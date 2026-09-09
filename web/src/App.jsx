@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
+import Landing from './pages/Landing'
 import TelegramLogin from './pages/TelegramLogin'
 import Home from './pages/Home'
 
@@ -7,14 +8,16 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Landing Page */}
+        <Route path="/" element={<Landing />} />
+
+        {/* Telegram MTProto Login */}
         <Route path="/login" element={
-          <TelegramLogin onLoginSuccess={() => window.location.href = '/'} />
+          <TelegramLogin onLoginSuccess={() => window.location.href = '/drives'} />
         } />
-        {/* Main home redirects to drives or last selected drive inside Home component */}
-        <Route path="/" element={<Home />} />
+
+        {/* Drives Directory & Views */}
         <Route path="/drives" element={<Home />} />
-        
-        {/* Drive views */}
         <Route path="/drive/:chatId" element={<Home />} />
         <Route path="/drive/:chatId/file/:messageId" element={<Home />} />
         

@@ -40,23 +40,11 @@ export default function Home() {
     fetchChats();
   }, [navigate]);
 
-  useEffect(() => {
-    // If visiting root "/" directly, redirect based on last selected drive
-    if (window.location.pathname === "/") {
-      const lastId = getCookie("telegram_selected_chat_id");
-      if (lastId) {
-        navigate(`/drive/${lastId}`, { replace: true });
-      } else {
-        navigate("/drives", { replace: true });
-      }
-    }
-  }, [navigate, chatId]);
-
   const handleLogOut = () => {
     deleteCookie("telegram_token");
     deleteCookie("telegram_selected_chat_id");
     deleteCookie("telegram_selected_chat_name");
-    navigate("/login");
+    navigate("/");
   };
 
   const handleSelectChat = (chat) => {

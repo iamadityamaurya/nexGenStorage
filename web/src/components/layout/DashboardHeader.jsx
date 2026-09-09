@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function DashboardHeader({
   chatName,
@@ -17,11 +18,15 @@ export default function DashboardHeader({
       {/* Left: Brand + Chat name */}
       <div className="flex items-center gap-3 min-w-0">
         {/* Icon */}
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center flex-shrink-0 shadow-md shadow-indigo-500/20">
+        <Link
+          to="/"
+          title="NexGenStorage Home"
+          className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center flex-shrink-0 shadow-md shadow-indigo-500/20 hover:scale-105 transition-transform"
+        >
           <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" />
           </svg>
-        </div>
+        </Link>
         <div className="min-w-0">
           <p className="text-[10px] font-semibold text-indigo-400 uppercase tracking-widest leading-none mb-0.5">Drive</p>
           <h2 className="text-sm font-semibold text-slate-200 tracking-tight truncate max-w-[120px] md:max-w-[200px] lg:max-w-sm">
