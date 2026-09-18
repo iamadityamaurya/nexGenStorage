@@ -1,41 +1,25 @@
-import { DarkTheme, ThemeProvider } from '@react-navigation/native';
+import '../src/utils/polyfills';
+import React from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
-import { Colors } from '@/constants/theme';
-
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
-
-const CustomDarkTheme = {
-  ...DarkTheme,
-  colors: {
-    ...DarkTheme.colors,
-    background: Colors.dark.background,
-    card: Colors.dark.surface1,
-    text: Colors.dark.text,
-    border: Colors.dark.border,
-    primary: Colors.dark.primary,
-  },
-};
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function RootLayout() {
   return (
-    <ThemeProvider value={CustomDarkTheme}>
+    <SafeAreaProvider>
+      <StatusBar style="light" />
       <Stack
         screenOptions={{
           headerShown: false,
-          contentStyle: { backgroundColor: Colors.dark.background },
-          animation: 'slide_from_right',
+          contentStyle: { backgroundColor: '#07080f' },
+          animation: 'fade',
         }}
       >
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="login" options={{ headerShown: false }} />
-        <Stack.Screen name="drive/[chatId]/index" options={{ headerShown: false }} />
-        <Stack.Screen name="drive/[chatId]/folder/[folderId]" options={{ headerShown: false }} />
+        <Stack.Screen name="index" />
+        <Stack.Screen name="login" />
+        <Stack.Screen name="drives" />
+        <Stack.Screen name="drive/[chatId]" />
       </Stack>
-      <StatusBar style="light" />
-    </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
